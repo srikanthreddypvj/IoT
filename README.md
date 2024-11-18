@@ -1,12 +1,14 @@
 # IoT
-----------------------------------------------------------------------------------------
+
  http://localhost:1880/ui/ - For the Dashboards of Node Red
  hivemq.com/demos/websocket-client/  - HiveMQ 
- ----------------------------------------------------------------------------------------
+                  -         -
+ 
 GENERATING RANDOM VALUES:-
 msg.payload=Math.floor(Math.random()*(High - Low + 1)) + low;
 return msg;
-----------------------------------------------------------------------------------------
+                  -         -                  -         -
+                  
 Code to Generate Random Heart Rate and Blood Pressure Values:-
 function getRandomInt(min, max) {
 return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -18,7 +20,8 @@ heartRate: heartRate,
 bloodPressure: bloodPressure
 };
 return msg;
-----------------------------------------------------------------------------------------
+
+                  -         -                  -         -
 SMTP:
 To:-.....................
 Server:- smtp.gmail.com
@@ -26,7 +29,8 @@ Port:- 465
 Auth Type:- Basic
 Userid:- emailId
 Password:- App Password
-----------------------------------------------------------------------------------------
+                  -         -                  -         -
+                  
 CODE to check the Conditions:-
 function randomWeight() {
 return Math.floor(Math.random() * 101); // Random weight between 0 and 100 kg
@@ -53,7 +57,8 @@ seat.status = "Vacant";
 msg.seats = seats;
 msg.fanStatus = fanStatus ? "ON" : "OFF";
 return msg;
-----------------------------------------------------------------------------------------
+                  -         -                  -         -
+                  
 This flow will check and return the available parking slot 
 Function Code
 const now = new Date().toISOString();
@@ -68,4 +73,5 @@ if (!msg.payload.vehicleId || !msg.payload.vehicleType) {
  return null; // Stop processing
 }
 return msg;
-----------------------------------------------------------------------------------------
+                  -         -                  -         -
+                  
