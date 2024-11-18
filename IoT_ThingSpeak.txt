@@ -1,0 +1,22 @@
+THINGSPEAK:
+
+https://thingspeak.mathworks.com/channels
+----------------------------------------------------------------------------------------
+SingIn to Account using MatLab 
+Go to Channels>My Channels
+Create Private View (Channel) by using NEW CHANNEL
+Click API Keys
+From there We can make use of Write API and Read API
+----------------------------------------------------------------------------------------
+Node-Red
+
+Inject ---> Function(Random Values) ---> HTTP Request ---> Debug
+In HTTP Request: Paste the Write API Key Link
+https://api.thingspeak.com/update?api_key=<Write API>&field1={{payload}}
+
+
+Read API:
+https://api.thingspeak.com/channels/<Your Channel ID/Number>/fields/1.json?api_key=<Read API>&results=2
+----------------------------------------------------------------------------------------
+From the Private View in ThingSpeak we can see the Graphs
+and Aother Visualizations
