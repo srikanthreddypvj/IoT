@@ -1,0 +1,29 @@
+CREATE TABLE PRODUCT (ProductID INT, ProductName STRING, Category STRING, Price FLOAT, Stock INT);
+
+INSERT INTO PRODUCT VALUES (1, 'Smartphone', 'Electronics', 1200.00, 15);
+
+SELECT * FROM PRODUCT WHERE Category = 'Electronics' AND Price < 1500 AND Stock > 10;
+---------------------------------------------------------------------------
+CREATE TABLE Orders ( OrderID INT, CustomerID INT, OrderDay TIMESTAMP, OrderAmount FLOAT, OrderStatus STRING );
+
+INSERT INTO Orders VALUES (1, 101, '2024-11-01 10:30:00', 250.50, 'Completed');
+
+SELECT OrderStatus, COUNT(*) AS NoOfOrders, SUM(OrderAmount) AS TotalOrderAmount FROM Orders GROUP BY OrderStatus;
+---------------------------------------------------------------------------
+CREATE TABLE Webtraffic ( userid INT, pageurl STRING, visitdate DATE, year INT, month INT );
+
+INSERT INTO Webtraffic VALUES (1, 'https://example.com/page1', '2024-10-01', 2024, 10);
+
+SELECT pageurl, COUNT(*) AS NoOfVisits FROM Webtraffic
+WHERE year = 2024 AND month = 10 GROUP BY pageurl;
+---------------------------------------------------------------------------
+CREATE TABLE Salesdata ( saleid INT, productid INT, region STRING, salesamount FLOAT, salesdate DATE );
+
+INSERT INTO Salesdata VALUES (1, 101, 'North', 75000.00, '2024-11-01');
+
+SELECT region, SUM(salesamount) AS TotalSales FROM Salesdata GROUP BY region HAVING SUM(salesamount) > 200000;
+
+
+
+
+
