@@ -1,0 +1,63 @@
+1) SortMapper.java
+
+import java.io.IOException;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+public class SortMapper extends Mapper<Object, Text, IntWritable, Text> {
+ private IntWritable number = new IntWritable();
+ @Override
+ protected void map(Object key, Text value, Context context)
+ throws IOException, InterruptedException {
+ String[] tokens = value.toString().split(",");
+ number.set(Integer.parseInt(tokens[0]));
+ context.write(number, new Text(tokens[1]));
+ }
+}
+
+2) SortReducer.java
+
+import java.io.IOException;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+public class SortReducer extends Reducer<IntWritable, Text, IntWritable, Text> {
+ @Override
+ protected void reduce(IntWritable key, Iterable<Text> values, Context context)
+ throws IOException, InterruptedException {
+ for (Text val : values) {
+ context.write(key, val);
+ }
+ }
+}
+
+
+3)TotalSortDriver.java
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.partition.TotalOrderPartitioner;
+public class TotalSortDriver {
+ public static void main(String[] args) throws Exception {
+ Configuration conf = new Configuration();
+ Job job = Job.getInstance(conf, "total sort");
+ job.setJarByClass(TotalSortDriver.class);
+ job.setMapperClass(SortMapper.class);
+ job.setReducerClass(SortReducer.class);
+ job.setOutputKeyClass(IntWritable.class);
+ job.setOutputValueClass(Text.class);
+ FileInputFormat.addInputPath(job, new Path(args[0]));
+ FileOutputFormat.setOutputPath(job, new Path(args[1]));
+ // Set the Total Order Partitioner
+ job.setPartitionerClass(TotalOrderPartitioner.class);
+ 
+ // Specify the partition file
+ TotalOrderPartitioner.setPartitionFile(job.getConfiguration(), new Path(args[2]));
+ System.exit(job.waitForCompletion(true) ? 0 : 1);
+ }
+}

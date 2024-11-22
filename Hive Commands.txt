@@ -1,0 +1,10 @@
+Hive Example:
+
+1) Table Creation: 
+CREATE TABLE PRODUCT_1155 (ProductID INT, ProductName STRING, Category STRING, Price FLOAT, Stock INT);
+
+2)Insertion:
+INSERT INTO PRODUCT_1155 VALUES (1, 'Smartphone', 'Electronics', 1200.00, 15);
+
+3)Selection:
+SELECT * FROM PRODUCT_1155 WHERE Category = 'Electronics' AND Price < 1500 AND Stock > 10;
