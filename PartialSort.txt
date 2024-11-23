@@ -14,8 +14,6 @@ public class SortMapper extends Mapper<LongWritable, Text, IntWritable, IntWrita
  context.write(number, number);
  }
 }
-
-
 2) SortReducer.java
 
 import org.apache.hadoop.io.IntWritable;
