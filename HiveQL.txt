@@ -1,5 +1,6 @@
 CREATE TABLE test.emp (sno INT, usr_name STRING, city STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' STORED AS TEXTFILE;     
                                                                                                                  -- To load the data from txt file.
+
 LOAD DATA LOCAL INPATH 'path/to/your/file.txt' INTO TABLE test.emp;
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE PRODUCT (ProductID INT, ProductName STRING, Category STRING, Price FLOAT, Stock INT);
