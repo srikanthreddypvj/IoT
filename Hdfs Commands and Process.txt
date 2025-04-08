@@ -1,5 +1,5 @@
 1) hdfs dfs -mkdir FolderName                     --Creating Folder in Hadoop
-2) hdfs dfs -ls /                                 --Displaying files
+2) hdfs dfs -ls /                                 --Displaying file
 3) cat Samle.txt                                  --Displaying text in file
 4) hdfs dfs -put Sample.txt FolderName            --Put Local File in Hadoop
 5) hdfs dfs -get Sample.txt                       --Get Local File from Hadoop
