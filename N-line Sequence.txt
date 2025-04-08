@@ -1,4 +1,4 @@
-1) MyMapper.java
+1) MyMapper.javacc
 
 import java.io.IOException; 
 import org.apache.hadoop.io.*; 
